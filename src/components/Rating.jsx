@@ -1,7 +1,7 @@
 function Rating({ score }) {
   return (
     <div>
-      <ul>
+      <ul className="flex">
         {[0, 1, 2, 3, 4].map((index) => {
           return (
             <li key={index}>
