@@ -1,6 +1,7 @@
 import Axios from 'axios';
 import DebugStates from 'components/DebugStates';
 import { useEffect, useState } from 'react';
+import Review from 'components/Review';
 
 function ReviewList() {
   const [loading, setLoading] = useState(false);
@@ -24,9 +25,7 @@ function ReviewList() {
         setReviewList(data);
       })
       .catch((error) => {
-        console.group('에러응답');
-        console.log(error);
-        console.groupEnd();
+        console.error(error);
         setError(error);
       })
       .finally(() => {
@@ -39,11 +38,17 @@ function ReviewList() {
       {loading && <div>Loading...</div>}
       {error && <div>통신 중 오류가 발생했습니다.</div>}
       <button
-        onclick={() => refetch()}
+        onClick={() => refetch()}
         className="bg-purple-300 hover:bg-purple-600 hover:text-yellow-400"
       >
         새로고침
       </button>
+      <div>
+        {reviewList.map((review) => (
+          <Review key={review.id} review={review} />
+        ))}
+      </div>
+
       <hr />
       <DebugStates loading={loading} error={error} reviewList={reviewList} />
     </div>
