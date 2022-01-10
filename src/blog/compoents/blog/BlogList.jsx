@@ -1,10 +1,11 @@
 import Axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Blog from '../Blog';
 
 function BlogList() {
   const [blogList, setBlogList] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     refetch();
@@ -27,8 +28,9 @@ function BlogList() {
       });
   };
 
-  const handleChangedDetail = () => {
+  const handleChangedDetail = (post) => {
     console.log('click');
+    return navigate(`/blog/${post.id}/`);
   };
 
   return (
@@ -39,7 +41,9 @@ function BlogList() {
           <Blog
             key={bloglist.id}
             blog={bloglist}
-            handleChangedDetail={handleChangedDetail}
+            handleChangedDetail={() => {
+              handleChangedDetail(bloglist);
+            }}
           />
         ))}
       </div>
