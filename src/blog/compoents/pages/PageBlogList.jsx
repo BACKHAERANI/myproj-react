@@ -3,7 +3,9 @@ import BlogList from '../blog/BlogList';
 function PageBlogList() {
   return (
     <div>
-      <h2 className="bg-blue-400">Blog</h2>
+      <h1 className="pb-1 text-gray-500 border-b-4 border-purple-500 text-xl">
+        Blog
+      </h1>
       <BlogList />
     </div>
   );
