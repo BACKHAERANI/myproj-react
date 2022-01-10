@@ -6,7 +6,7 @@ import TopNav from 'components/TopNav';
 import 'App.css';
 import Components from 'pages/examples/Components';
 import ReviewForm from 'pages/reviews/ReviewForm';
-import PageBlog from 'pages/blog/PageBlog';
+import PageBlog from 'blog/compoents/pages/PageBlogList';
 
 function App() {
   return (
