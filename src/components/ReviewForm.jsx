@@ -1,4 +1,4 @@
-function ReviewForm({ fieldValues, handleChange, handleSubmit }) {
+function ReviewForm({ fieldValues, handleChange, handleSubmit, loading }) {
   const handleClickedSubmitButtion = () => {
     if (handleSubmit) {
       handleSubmit();
@@ -10,7 +10,12 @@ function ReviewForm({ fieldValues, handleChange, handleSubmit }) {
   return (
     <div>
       <h3>평점</h3>
-      <select name="score" onChange={handleChange} value={fieldValues.score}>
+      <select
+        name="score"
+        onChange={handleChange}
+        value={fieldValues.score}
+        disabled={loading}
+      >
         <option>0</option>
         <option>1</option>
         <option>2</option>
@@ -24,11 +29,13 @@ function ReviewForm({ fieldValues, handleChange, handleSubmit }) {
         name="content"
         onChange={handleChange}
         value={fieldValues.content}
+        disabled={loading}
       ></textarea>
       <hr />
       <button
         className="bg-blue-100 cursor-pointer hover:bg-blue-400"
         onClick={() => handleClickedSubmitButtion()}
+        disabled={loading}
       >
         저장
       </button>
