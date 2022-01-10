@@ -6,7 +6,6 @@ import TopNav from 'components/TopNav';
 import 'App.css';
 import Components from 'pages/examples/Components';
 import ReviewForm from 'pages/reviews/ReviewForm';
-import PageBlog from 'pages/blog/PageBlog';
 
 function App() {
   return (
@@ -20,7 +19,6 @@ function App() {
         <Route path="/reviews/new/" element={<ReviewForm />} />
         <Route path="/reviews/:reviewId/edit/" element={<ReviewForm />} />
         <Route path="/examples/components/" element={<Components />} />
-        <Route path="/blog/" element={<PageBlog />} />
       </Routes>
     </div>
   );
