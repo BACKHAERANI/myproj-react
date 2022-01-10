@@ -17,6 +17,7 @@ function App() {
         <Route path="/accounts/profile" element={<Profile />} />
         <Route path="/reviews/" element={<ReviewList />} />
         <Route path="/reviews/new/" element={<ReviewForm />} />
+        <Route path="/reviews/:reviewId/edit/" element={<ReviewForm />} />
         <Route path="/examples/components/" element={<Components />} />
       </Routes>
     </div>
