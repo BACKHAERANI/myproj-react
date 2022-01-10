@@ -1,4 +1,4 @@
-function Blog({ blog, handleChangedDetail }) {
+function Blog({ blog, handleChangedDetail, handleDelete }) {
   const { title } = blog;
 
   return (
@@ -11,7 +11,9 @@ function Blog({ blog, handleChangedDetail }) {
           수정
         </span>
         <span
-          onClick={() => {}}
+          onClick={() => {
+            handleDelete();
+          }}
           className="hover:text-red-400 cursor-pointer text-sm"
         >
           삭제
