@@ -4,6 +4,7 @@ import Axios from 'axios';
 import DebugStates from 'components/DebugStates';
 import ReviewForm from 'components/ReviewForm';
 import { useState } from 'react/cjs/react.development';
+import { useEffect } from 'react';
 
 function PageReviewForm() {
   const { reviewId } = useParams(); // 파람스 ':'으로 시작하는 값들을 가져온다
@@ -15,6 +16,20 @@ function PageReviewForm() {
       content: '',
       score: 5,
     });
+
+  useEffect(() => {
+    setLoading(true);
+    setError(null);
+    const url = `http://127.0.0.1:8000/shop/api/reviews/${reviewId}/`;
+    Axios.get(url)
+      .then((response) => {
+        setFieldValues(response.data);
+      })
+      .catch((e) => setError(e))
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [reviewId, setFieldValues]);
 
   const saveReview = async () => {
     setLoading(true);
