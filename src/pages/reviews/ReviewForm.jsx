@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Axios from 'axios';
 import DebugStates from 'components/DebugStates';
 import ReviewForm from 'components/ReviewForm';
-import { useState } from 'react/cjs/react.development';
+import { useState } from 'react';
 import { useEffect } from 'react';
 
 function PageReviewForm() {
@@ -18,18 +18,22 @@ function PageReviewForm() {
     });
 
   useEffect(() => {
-    setLoading(true);
-    setError(null);
-    const url = `http://127.0.0.1:8000/shop/api/reviews/${reviewId}/`;
-    Axios.get(url)
-      .then((response) => {
+    const fetchReview = async () => {
+      setLoading(true);
+      setError(null);
+
+      const url = `http://localhost:8000/shop/api/reviews/${reviewId}/`;
+      try {
+        const response = await Axios.get(url);
         setFieldValues(response.data);
-      })
-      .catch((e) => setError(e))
-      .finally(() => {
-        setLoading(false);
-      });
-  }, [reviewId, setFieldValues]);
+      } catch (e) {
+        setError(e);
+      }
+      setLoading(false);
+    };
+    if (reviewId) fetchReview();
+    else clearFieldValues();
+  }, [reviewId, setFieldValues, clearFieldValues]);
 
   const saveReview = async () => {
     setLoading(true);
