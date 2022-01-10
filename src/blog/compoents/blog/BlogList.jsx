@@ -55,6 +55,9 @@ function BlogList() {
   return (
     <div>
       <h2>Blog List</h2>
+      <button className="bg-pink-300" onClick={() => navigate('/blog/new/')}>
+        New!포스팅
+      </button>
       <div>
         {blogList.map((bloglist) => (
           <Blog
