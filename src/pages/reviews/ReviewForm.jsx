@@ -38,12 +38,20 @@ function PageReviewForm() {
   const saveReview = async () => {
     setLoading(true);
     setError(null);
-    const url = 'http://127.0.0.1:8000/shop/api/reviews/';
+
+    const url = !reviewId
+      ? 'http://127.0.0.1:8000/shop/api/reviews/'
+      : `http://localhost:8000/shop/api/reviews/${reviewId}/`;
+
     try {
-      const response = await Axios.post(url, fieldValues);
-      console.group('saveReivew');
-      console.log(response.data);
-      console.groupEnd();
+      if (!reviewId) {
+        const response = await Axios.post(url, fieldValues);
+        console.group('saveReivew');
+        console.log(response.data);
+        console.groupEnd();
+      } else {
+        await Axios.put(url, fieldValues);
+      }
       navigate('/reviews/');
     } catch (e) {
       setError(e);
