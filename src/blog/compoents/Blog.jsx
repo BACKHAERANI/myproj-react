@@ -1,11 +1,13 @@
-function Blog({ blog, handleChangedDetail, handleDelete }) {
+function Blog({ blog, handleChangedDetail, handleDelete, handleEdit }) {
   const { title } = blog;
 
   return (
     <div className="bg-yellow-100 border-2 border-purple-300 my-1 p-1 ">
       <div>
         <span
-          onClick={() => {}}
+          onClick={() => {
+            handleEdit();
+          }}
           className="hover:text-blue-400 cursor-pointer mr-1 text-sm"
         >
           수정

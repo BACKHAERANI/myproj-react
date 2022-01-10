@@ -25,6 +25,7 @@ function App() {
         <Route path="/blog/" element={<PageBlog />} />
         <Route path="/blog/:postId/" element={<PostDetail />} />
         <Route path="/blog/new/" element={<PostForm />} />
+        <Route path="/blog/:postId/edit/" element={<PostForm />} />
       </Routes>
     </div>
   );

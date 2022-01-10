@@ -28,11 +28,13 @@ function BlogList() {
       });
   };
 
+  //디테일 페이지로 이동
   const handleChangedDetail = (post) => {
     console.log('click');
     return navigate(`/blog/${post.id}/`);
   };
 
+  //삭제
   const deleteBlog = (deletingBlog) => {
     const { id: deletingblogID } = deletingBlog;
     const url = `http://127.0.0.1:8000/blog/api/posts/${deletingblogID}/`;
@@ -69,6 +71,7 @@ function BlogList() {
             handleDelete={() => {
               deleteBlog(bloglist);
             }}
+            handleEdit={() => navigate(`/blog/${bloglist.id}/edit`)}
           />
         ))}
       </div>
