@@ -12,6 +12,7 @@ function BlogForm({ fieldValues, handleChange, handleSubmit }) {
       <h2>Title</h2>
       <input
         className="border-2 border-purple-300 my-1 p-1"
+        size="60"
         type="text"
         name="title"
         value={fieldValues.title}
@@ -23,6 +24,8 @@ function BlogForm({ fieldValues, handleChange, handleSubmit }) {
         className="border-2 border-purple-300 my-1 p-1"
         type="text"
         name="content"
+        cols="70"
+        rows="20"
         value={fieldValues.content}
         onChange={handleChange}
       />

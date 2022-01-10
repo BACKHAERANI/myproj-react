@@ -21,9 +21,13 @@ function BlogDetail({}) {
 
   return (
     <div>
+      <h2 className="my-1 p-4">
+        [{blogList.id}] {blogList.title}
+      </h2>
       <div className="bg-yellow-100 border-2 border-purple-300 my-1 p-1">
         {blogList.content}
       </div>
+      <br />
       <img src="https://placeimg.com/640/480/animals" alt="" />
     </div>
   );
