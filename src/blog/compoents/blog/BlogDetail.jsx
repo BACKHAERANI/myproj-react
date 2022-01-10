@@ -20,8 +20,11 @@ function BlogDetail({}) {
   }, [postId]);
 
   return (
-    <div className="bg-yellow-100 border-2 border-purple-300 my-1 p-1">
-      {blogList.content}
+    <div>
+      <div className="bg-yellow-100 border-2 border-purple-300 my-1 p-1">
+        {blogList.content}
+      </div>
+      <img src="https://placeimg.com/640/480/animals" alt="" />
     </div>
   );
 }
