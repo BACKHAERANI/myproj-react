@@ -1,5 +1,7 @@
 import Axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Navigate } from 'react-router-dom';
+import Blog from '../Blog';
 
 function BlogList() {
   const [blogList, setBlogList] = useState([]);
@@ -24,19 +26,21 @@ function BlogList() {
         console.groupEnd();
       });
   };
+
+  const handleChangedDetail = () => {
+    console.log('click');
+  };
+
   return (
     <div>
       <h2>Blog List</h2>
       <div>
-        {blogList.map((list) => (
-          <div
-            className="bg-purple-100 border-2 border-purple-300 my-1 p-1"
-            key={list.id}
-          >
-            {list.title}
-            <hr className="border-blue-300" />
-            {list.content}
-          </div>
+        {blogList.map((bloglist) => (
+          <Blog
+            key={bloglist.id}
+            blog={bloglist}
+            handleChangedDetail={handleChangedDetail}
+          />
         ))}
       </div>
     </div>

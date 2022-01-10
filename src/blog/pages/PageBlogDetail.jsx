@@ -1,4 +1,4 @@
-import BlogDetail from '../blog/BlogDetail';
+import BlogDetail from '../compoents/blog/BlogDetail';
 
 function PageBlogDetail() {
   return (

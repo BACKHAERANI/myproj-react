@@ -1,4 +1,4 @@
-import BlogForm from '../blog/BlogForm';
+import BlogForm from '../compoents/blog/BlogForm';
 
 function PageBlogForm() {
   return (

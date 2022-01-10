@@ -1,4 +1,4 @@
-import BlogList from '../blog/BlogList';
+import BlogList from '../compoents/blog/BlogList';
 
 function PageBlogList() {
   return (

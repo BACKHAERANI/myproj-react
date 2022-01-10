@@ -6,7 +6,8 @@ import TopNav from 'components/TopNav';
 import 'App.css';
 import Components from 'pages/examples/Components';
 import ReviewForm from 'pages/reviews/ReviewForm';
-import PageBlog from 'blog/compoents/pages/PageBlogList';
+import PageBlog from 'blog/pages/PageBlogList';
+import PostDetail from 'blog/pages/PageBlogDetail';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/reviews/:reviewId/edit/" element={<ReviewForm />} />
         <Route path="/examples/components/" element={<Components />} />
         <Route path="/blog/" element={<PageBlog />} />
+        <Route path="/blog/:postId/" element={<PostDetail />} />
       </Routes>
     </div>
   );
