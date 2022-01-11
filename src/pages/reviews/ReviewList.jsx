@@ -3,6 +3,7 @@ import DebugStates from 'components/DebugStates';
 import { useEffect, useState } from 'react';
 import Review from 'components/Review';
 import { useNavigate } from 'react-router-dom';
+import { API_HOST } from 'Constants';
 
 function ReviewList() {
   const [loading, setLoading] = useState(false);
@@ -18,7 +19,7 @@ function ReviewList() {
   const refetch = () => {
     setLoading(true);
     setError(null);
-    const url = ' http://localhost:8000/shop/api/reviews/';
+    const url = `${API_HOST}/shop/api/reviews/`;
     //Promise 객체
     Axios.get(url)
       .then(({ data }) => {
@@ -38,7 +39,7 @@ function ReviewList() {
 
   const deleteReview = (deletingReview) => {
     const { id: deletingreviewID } = deletingReview;
-    const url = `http://localhost:8000/shop/api/reviews/${deletingreviewID}/`;
+    const url = `${API_HOST}/shop/api/reviews/${deletingreviewID}/`;
 
     setLoading(true);
     setError(null);

@@ -2,6 +2,7 @@ import Axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Blog from '../Blog';
+import { API_HOST } from 'Constants';
 
 function BlogList() {
   const [blogList, setBlogList] = useState([]);
@@ -12,7 +13,7 @@ function BlogList() {
   }, []);
 
   const refetch = () => {
-    const url = 'http://127.0.0.1:8000/blog/api/posts/';
+    const url = `${API_HOST}/blog/api/posts/`;
 
     Axios.get(url)
       .then(({ data }) => {
@@ -37,7 +38,7 @@ function BlogList() {
   //삭제
   const deleteBlog = (deletingBlog) => {
     const { id: deletingblogID } = deletingBlog;
-    const url = `http://127.0.0.1:8000/blog/api/posts/${deletingblogID}/`;
+    const url = `${API_HOST}/blog/api/posts/${deletingblogID}/`;
 
     Axios.delete(url)
       .then(() => {

@@ -5,6 +5,8 @@ import DebugStates from 'components/DebugStates';
 import ReviewForm from 'components/ReviewForm';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { API_HOST } from 'Constants';
+
 function PageReviewForm() {
   const { reviewId } = useParams(); // 파람스 ':'으로 시작하는 값들을 가져온다
   const [loading, setLoading] = useState(false);
@@ -19,7 +21,7 @@ function PageReviewForm() {
     const fetchReview = async () => {
       setLoading(true);
       setError(null);
-      const url = `http://localhost:8000/shop/api/reviews/${reviewId}/`;
+      const url = `${API_HOST}/shop/api/reviews/${reviewId}/`;
       try {
         const response = await Axios.get(url);
         setFieldValues(response.data);
@@ -36,8 +38,8 @@ function PageReviewForm() {
     setError(null);
 
     const url = !reviewId
-      ? 'http://127.0.0.1:8000/shop/api/reviews/'
-      : `http://localhost:8000/shop/api/reviews/${reviewId}/`;
+      ? `${API_HOST}/shop/api/reviews/`
+      : `${API_HOST}/shop/api/reviews/${reviewId}/`;
 
     try {
       if (!reviewId) {
