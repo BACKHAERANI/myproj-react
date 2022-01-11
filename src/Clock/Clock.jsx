@@ -16,8 +16,12 @@ function Clock() {
     <div className="clock-wrapper">
       <h2>Clock</h2>
       <div class="clock">
-        <p class="date">2021-10-05 TUE</p>
-        <p class="time">{date.toISOString().slice(11, 19)}</p>
+        <p class="date">
+          {date.getFullYear()}-{date.getMonth() + 1}-{date.getDate()}
+        </p>
+        <p class="time">
+          {date.getHours()}:{date.getMinutes()}:{date.getSeconds()}
+        </p>
         <p class="text">라니의 시간은 제대로 흐른다</p>
       </div>
     </div>
