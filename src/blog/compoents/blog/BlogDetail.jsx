@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { API_HOST } from 'Constants';
-import Axios from 'axios';
+import { axiosInstance } from 'api/base';
 
 function BlogDetail({}) {
   const { postId } = useParams();
   const [blogList, setBlogList] = useState([]);
 
   useEffect(() => {
-    const url = `${API_HOST}/blog/api/posts/${postId}/`;
+    const url = `/blog/api/posts/${postId}/`;
 
-    Axios.get(url)
+    axiosInstance
+      .get(url)
       .then(({ data }) => {
         setBlogList(data);
       })

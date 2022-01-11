@@ -2,7 +2,7 @@ import Axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Blog from '../Blog';
-import { API_HOST } from 'Constants';
+import { axiosInstance } from 'api/base';
 
 function BlogList() {
   const [blogList, setBlogList] = useState([]);
@@ -13,9 +13,10 @@ function BlogList() {
   }, []);
 
   const refetch = () => {
-    const url = `${API_HOST}/blog/api/posts/`;
+    const url = `/blog/api/posts/`;
 
-    Axios.get(url)
+    axiosInstance
+      .get(url)
       .then(({ data }) => {
         console.group('정상응답');
         console.log(data);
@@ -38,9 +39,10 @@ function BlogList() {
   //삭제
   const deleteBlog = (deletingBlog) => {
     const { id: deletingblogID } = deletingBlog;
-    const url = `${API_HOST}/blog/api/posts/${deletingblogID}/`;
+    const url = `/blog/api/posts/${deletingblogID}/`;
 
-    Axios.delete(url)
+    axiosInstance
+      .delete(url)
       .then(() => {
         console.log('삭제성공');
         // 삭제된 항목만 상탯값에서 제거

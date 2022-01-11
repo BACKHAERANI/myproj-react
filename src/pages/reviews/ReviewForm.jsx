@@ -1,11 +1,10 @@
 import useFieldValues from 'components/hooks/useFieldValues';
 import { useNavigate, useParams } from 'react-router-dom';
-import Axios from 'axios';
+import { axiosInstance } from 'api/base';
 import DebugStates from 'components/DebugStates';
 import ReviewForm from 'components/ReviewForm';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { API_HOST } from 'Constants';
 
 function PageReviewForm() {
   const { reviewId } = useParams(); // 파람스 ':'으로 시작하는 값들을 가져온다
@@ -21,9 +20,9 @@ function PageReviewForm() {
     const fetchReview = async () => {
       setLoading(true);
       setError(null);
-      const url = `${API_HOST}/shop/api/reviews/${reviewId}/`;
+      const url = `/shop/api/reviews/${reviewId}/`;
       try {
-        const response = await Axios.get(url);
+        const response = await axiosInstance.get(url);
         setFieldValues(response.data);
       } catch (e) {
         setError(e);
@@ -38,17 +37,17 @@ function PageReviewForm() {
     setError(null);
 
     const url = !reviewId
-      ? `${API_HOST}/shop/api/reviews/`
-      : `${API_HOST}/shop/api/reviews/${reviewId}/`;
+      ? `/shop/api/reviews/`
+      : `/shop/api/reviews/${reviewId}/`;
 
     try {
       if (!reviewId) {
-        const response = await Axios.post(url, fieldValues);
+        const response = await axiosInstance.post(url, fieldValues);
         console.group('saveReivew');
         console.log(response.data);
         console.groupEnd();
       } else {
-        await Axios.put(url, fieldValues);
+        await axiosInstance.put(url, fieldValues);
       }
       navigate('/reviews/');
     } catch (e) {
