@@ -10,8 +10,10 @@ import PageBlog from 'blog/pages/PageBlogList';
 import PostDetail from 'blog/pages/PageBlogDetail';
 import PostForm from 'blog/pages/PageBlogForm';
 import Clock from 'Clock/Clock';
+import useWindowWidth from 'Clock/useWindowWidth';
 
 function App() {
+  const windowWidth = useWindowWidth();
   return (
     <div className="app">
       <TopNav />
@@ -29,6 +31,8 @@ function App() {
         <Route path="/blog/:postId/edit/" element={<PostForm />} />
         <Route path="/Clock/" element={<Clock />} />
       </Routes>
+      <hr />
+      윈도우 가로크기 : {windowWidth}px
     </div>
   );
 }
