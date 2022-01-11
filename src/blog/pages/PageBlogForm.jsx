@@ -61,7 +61,7 @@ function PageBlogForm() {
 
   return (
     <div>
-      <h2>Blog Form {postId ? '생성' : '수정'}</h2>
+      <h2>Blog Form {postId ? '수정' : '생성'}</h2>
       <BlogForm
         fieldValues={fieldValues}
         handleChange={handleChange}
