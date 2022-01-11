@@ -22,6 +22,12 @@ function TopNav() {
         <li>
           <MyLink to="/Clock/">시계</MyLink>
         </li>
+        <li>
+          <MyLink to="/examples/CssModule/">CssModule</MyLink>
+        </li>
+        <li>
+          <MyLink to="/examples/CssInJs/">CssInJs</MyLink>
+        </li>
       </ul>
     </div>
   );

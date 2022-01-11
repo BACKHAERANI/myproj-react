@@ -11,6 +11,8 @@ import PostDetail from 'blog/pages/PageBlogDetail';
 import PostForm from 'blog/pages/PageBlogForm';
 import Clock from 'Clock/Clock';
 import useWindowWidth from 'Clock/useWindowWidth';
+import CssModule from 'pages/examples/CssModule';
+import CssInJs from 'pages/examples/CssInJs';
 
 function App() {
   const windowWidth = useWindowWidth();
@@ -30,6 +32,8 @@ function App() {
         <Route path="/blog/new/" element={<PostForm />} />
         <Route path="/blog/:postId/edit/" element={<PostForm />} />
         <Route path="/Clock/" element={<Clock />} />
+        <Route path="/examples/CssModule/" element={<CssModule />} />
+        <Route path="/examples/CssInJs/" element={<CssInJs />} />
       </Routes>
       <hr />
       윈도우 가로크기 : {windowWidth}px

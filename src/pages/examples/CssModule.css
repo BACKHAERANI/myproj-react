@@ -1,0 +1,19 @@
+.css-module {
+  background-color: yellow;
+  color: red;
+}
+
+.css-module h2 {
+  background-color: tomato;
+  color: yellowgreen;
+}
+
+.css-module .content {
+  background-color: green;
+  color: tomato;
+}
+
+.css-module .date {
+  background-color: violet;
+  color: purple;
+}
