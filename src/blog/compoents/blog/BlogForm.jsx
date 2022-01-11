@@ -1,3 +1,5 @@
+import './Button.css';
+
 function BlogForm({ fieldValues, handleChange, handleSubmit, errorMessages }) {
   const handleClickedSubmitButtion = () => {
     if (handleSubmit) {
@@ -32,10 +34,7 @@ function BlogForm({ fieldValues, handleChange, handleSubmit, errorMessages }) {
       />
       <div className="text-red-400">{errorMessages.content}</div>
       <hr />
-      <button
-        className="bg-blue-100 cursor-pointer hover:bg-blue-400"
-        onClick={() => handleClickedSubmitButtion()}
-      >
+      <button className="button" onClick={() => handleClickedSubmitButtion()}>
         저장하기
       </button>
     </div>

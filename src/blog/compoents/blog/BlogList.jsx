@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Blog from '../Blog';
 import { axiosInstance } from 'api/base';
+import './Button.css';
 
 function BlogList() {
   const [blogList, setBlogList] = useState([]);
@@ -60,7 +61,7 @@ function BlogList() {
   return (
     <div>
       <h2>Blog List</h2>
-      <button className="bg-pink-300" onClick={() => navigate('/blog/new/')}>
+      <button className="button" onClick={() => navigate('/blog/new/')}>
         New!포스팅
       </button>
       <div>
