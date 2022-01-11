@@ -10,6 +10,7 @@ function PageReviewForm() {
   const { reviewId } = useParams(); // 파람스 ':'으로 시작하는 값들을 가져온다
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [errorMessages, setErrorMessages] = useState({});
   const navigate = useNavigate();
   const { fieldValues, handleChange, clearFieldValues, setFieldValues } =
     useFieldValues({
@@ -26,6 +27,7 @@ function PageReviewForm() {
         setFieldValues(response.data);
       } catch (e) {
         setError(e);
+        console.error(e);
       }
       setLoading(false);
     };
@@ -35,6 +37,7 @@ function PageReviewForm() {
   const saveReview = async () => {
     setLoading(true);
     setError(null);
+    setErrorMessages({});
 
     const url = !reviewId
       ? `/shop/api/reviews/`
@@ -52,7 +55,7 @@ function PageReviewForm() {
       navigate('/reviews/');
     } catch (e) {
       setError(e);
-      console.error(e);
+      setErrorMessages(e.response.data);
     }
     setLoading(false);
   };
@@ -65,6 +68,7 @@ function PageReviewForm() {
         handleChange={handleChange}
         handleSubmit={() => saveReview()}
         loading={loading}
+        errorMessages={errorMessages}
       />
     </div>
   );

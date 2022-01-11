@@ -1,4 +1,10 @@
-function ReviewForm({ fieldValues, handleChange, handleSubmit, loading }) {
+function ReviewForm({
+  fieldValues,
+  errorMessages,
+  handleChange,
+  handleSubmit,
+  loading,
+}) {
   const handleClickedSubmitButtion = () => {
     if (handleSubmit) {
       handleSubmit();
@@ -23,6 +29,7 @@ function ReviewForm({ fieldValues, handleChange, handleSubmit, loading }) {
         <option>4</option>
         <option>5</option>
       </select>
+      <div className="text-red-400">{errorMessages.score}</div>
       <h3>리뷰</h3>
       <textarea
         type="text"
@@ -31,6 +38,8 @@ function ReviewForm({ fieldValues, handleChange, handleSubmit, loading }) {
         value={fieldValues.content}
         disabled={loading}
       ></textarea>
+      <div className="text-red-400">{errorMessages.content}</div>
+
       <hr />
       <button
         className="bg-blue-100 cursor-pointer hover:bg-blue-400"
