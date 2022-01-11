@@ -9,6 +9,7 @@ import ReviewForm from 'pages/reviews/ReviewForm';
 import PageBlog from 'blog/pages/PageBlogList';
 import PostDetail from 'blog/pages/PageBlogDetail';
 import PostForm from 'blog/pages/PageBlogForm';
+import Clock from 'Clock/Clock';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/blog/:postId/" element={<PostDetail />} />
         <Route path="/blog/new/" element={<PostForm />} />
         <Route path="/blog/:postId/edit/" element={<PostForm />} />
+        <Route path="/Clock/" element={<Clock />} />
       </Routes>
     </div>
   );
