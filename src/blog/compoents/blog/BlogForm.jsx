@@ -1,4 +1,4 @@
-function BlogForm({ fieldValues, handleChange, handleSubmit }) {
+function BlogForm({ fieldValues, handleChange, handleSubmit, errorMessages }) {
   const handleClickedSubmitButtion = () => {
     if (handleSubmit) {
       handleSubmit();
@@ -18,6 +18,7 @@ function BlogForm({ fieldValues, handleChange, handleSubmit }) {
         value={fieldValues.title}
         onChange={handleChange}
       />
+      <div className="text-red-400">{errorMessages.title}</div>
 
       <h2>Content</h2>
       <textarea
@@ -29,6 +30,7 @@ function BlogForm({ fieldValues, handleChange, handleSubmit }) {
         value={fieldValues.content}
         onChange={handleChange}
       />
+      <div className="text-red-400">{errorMessages.content}</div>
       <hr />
       <button
         className="bg-blue-100 cursor-pointer hover:bg-blue-400"
