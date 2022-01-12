@@ -15,6 +15,8 @@ import CssModule from 'pages/examples/CssModule';
 import CssInJs from 'pages/examples/CssInJs';
 import ContextApiSample from 'pages/examples/ContextApiSample';
 import ContextApiSample2 from 'pages/examples/ContextApiSample2/index';
+import PageNewsIndex from 'news/pages/PageNewsIndex';
+import PageNewsArticleDetail from 'news/pages/PageNewsArticleDetail';
 
 function App() {
   const windowWidth = useWindowWidth();
@@ -33,6 +35,8 @@ function App() {
         <Route path="/blog/:postId/" element={<PostDetail />} />
         <Route path="/blog/new/" element={<PostForm />} />
         <Route path="/blog/:postId/edit/" element={<PostForm />} />
+        <Route path="/news/" element={<PageNewsIndex />} />
+        <Route path="/news/:articleId/" element={<PageNewsArticleDetail />} />
         <Route path="/Clock/" element={<Clock />} />
         <Route path="/examples/CssModule/" element={<CssModule />} />
         <Route path="/examples/CssInJs/" element={<CssInJs />} />
