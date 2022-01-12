@@ -7,10 +7,18 @@ import DebugStates from 'components/DebugStates';
 
 const INIT_FIELD_VALUES = { title: '', content: '' };
 
-// !articleId : 생성
-// articleId  : 수정
+// !articleId => manual=true
+// articleId =>manual=false
 
 function ArticleForm({ articleId, handleDidSave }) {
+  // articleId 값이 있을 때에만 조회
+  // articleId => manual=false
+  // !articleId => manual=true
+  const [{ data: article, loading: getLoading, error: getError }] = useApiAxios(
+    `/news/api/article/${articleId}/`,
+    { manual: !articleId },
+  );
+
   const [
     {
       loading: saveLoading,
@@ -20,13 +28,17 @@ function ArticleForm({ articleId, handleDidSave }) {
     saveRequest,
   ] = useApiAxios(
     {
-      url: '/news/api/article/',
-      method: 'POST',
+      url: !articleId
+        ? '/news/api/article/'
+        : `/news/api/article/${articleId}/`,
+      method: !articleId ? 'POST' : 'PUT',
     },
     { manual: true },
   );
 
-  const { fieldValues, handleFieldChange } = useFieldValues(INIT_FIELD_VALUES);
+  const { fieldValues, handleFieldChange } = useFieldValues(
+    article || INIT_FIELD_VALUES,
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -82,6 +94,9 @@ function ArticleForm({ articleId, handleDidSave }) {
         </div>
       </form>
       <DebugStates
+        article={article}
+        getLoading={getLoading}
+        getError={getError}
         saveErrorMessages={saveErrorMessages}
         fieldValues={fieldValues}
       />
