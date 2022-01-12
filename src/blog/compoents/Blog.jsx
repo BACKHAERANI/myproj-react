@@ -1,32 +1,9 @@
-function Blog({ blog, handleChangedDetail, handleDelete, handleEdit }) {
-  const { title } = blog;
+import { Link } from 'react-router-dom';
 
+function Blog({ posts }) {
   return (
-    <div className="bg-yellow-100 border-2 border-purple-300 my-1 p-1 ">
-      <div>
-        <span
-          onClick={() => {
-            handleEdit();
-          }}
-          className="hover:text-blue-400 cursor-pointer mr-1 text-sm"
-        >
-          수정
-        </span>
-        <span
-          onClick={() => {
-            handleDelete();
-          }}
-          className="hover:text-red-400 cursor-pointer text-sm"
-        >
-          삭제
-        </span>
-      </div>
-      <div
-        onClick={() => handleChangedDetail()}
-        className="cursor-pointer hover:text-blue-500"
-      >
-        {title}
-      </div>
+    <div className="p-2 mr-2 bg-white border-blue-400 h-10 hover:border-b-4 hover:text-blue-500 ">
+      <Link to={`/blog/${posts.id}/`}>{posts.title}</Link>
     </div>
   );
 }

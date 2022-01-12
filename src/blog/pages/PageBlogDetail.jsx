@@ -1,13 +1,14 @@
-import BlogDetail from '../compoents/blog/BlogDetail';
+import { useParams } from 'react-router-dom';
+import BlogDetail from 'blog/compoents/blog/BlogDetail';
 
 function PageBlogDetail() {
+  const { postId } = useParams();
+
   return (
     <div>
-      <h1 className="bg-purple-300 my-1 p-1">Blog Detail</h1>
-      <hr />
-      <BlogDetail />
+      <h2>나의 블로그#{postId}</h2>
+      <BlogDetail postId={postId} />
     </div>
   );
 }
-
 export default PageBlogDetail;
