@@ -1,11 +1,10 @@
-import useAxios from 'axios-hooks';
+import { useApiAxios } from 'api/base';
 import DebugStates from 'components/DebugStates';
 import ArticleSummary from './ArticleSummary';
 
 function ArticleList() {
-  const [{ data: articleList, loading, error }, refetch] = useAxios(
-    'http://127.0.0.1:8000/news/api/article/',
-  );
+  const [{ data: articleList, loading, error }, refetch] =
+    useApiAxios('/news/api/article/');
   return (
     <div>
       <h3>뉴스 기사 목록</h3>
