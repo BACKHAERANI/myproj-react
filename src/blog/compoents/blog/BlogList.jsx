@@ -20,7 +20,7 @@ function BlogList() {
       {error && '로딩 중 에러가 발생했습니다.'}
       {blogList && blogList.map((posts) => <Blog posts={posts} />)}
 
-      <DebugStates blogListt={blogList} loading={loading} error={error} />
+      <DebugStates blogList={blogList} loading={loading} error={error} />
     </div>
   );
 }
