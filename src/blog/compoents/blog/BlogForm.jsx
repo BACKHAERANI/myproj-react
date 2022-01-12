@@ -53,12 +53,13 @@ function BlogForm({ postId, handleDidSave }) {
 
       <form onSubmit={handleSubmit}>
         <div className="my-3">
+          <span className="text-xl">Title:</span>
           <input
             name="title"
             value={fieldValues.title}
             onChange={handleFieldChange}
             type="text"
-            className="p-1 bg-gray-100 w-full outline-none focus:border focus:border-gray-400 focus:border-dashed"
+            className="p-1 bg-gray-100 w-full outline-none border-2 border-gray-400 border-dashed focus:border-solid focus:border-purple-500"
           />
           {saveErrorMessages.title?.map((message, index) => (
             <p key={index} className="text-xs text-red-400">
@@ -68,11 +69,12 @@ function BlogForm({ postId, handleDidSave }) {
         </div>
 
         <div className="my-3">
+          <span className="text-xl">Content:</span>
           <textarea
             name="content"
             value={fieldValues.content}
             onChange={handleFieldChange}
-            className="p-1 bg-gray-100 w-full h-80 outline-none focus:border focus:border-gray-400 focus:border-dashed"
+            className="p-1 bg-gray-100 w-full h-80 outline-none border-2 border-gray-400 border-dashed focus:border-solid focus:border-purple-500"
           />
           {saveErrorMessages.content?.map((message, index) => (
             <p key={index} className="text-xs text-red-400">
