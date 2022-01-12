@@ -1,4 +1,5 @@
-import './Button.css';
+import Button from 'news/compoents/Button';
+import H2 from 'news/compoents/H2';
 
 function BlogForm({ fieldValues, handleChange, handleSubmit, errorMessages }) {
   const handleClickedSubmitButtion = () => {
@@ -11,10 +12,9 @@ function BlogForm({ fieldValues, handleChange, handleSubmit, errorMessages }) {
 
   return (
     <div>
-      <h2>Title</h2>
+      <H2>Title</H2>
       <input
-        className="border-2 border-purple-300 my-1 p-1"
-        size="60"
+        className="p-1 bg-gray-100 w-full outline-none border border-gray-400 border-dashed focus:border-black focus:border-solid"
         type="text"
         name="title"
         value={fieldValues.title}
@@ -22,21 +22,20 @@ function BlogForm({ fieldValues, handleChange, handleSubmit, errorMessages }) {
       />
       <div className="text-red-400">{errorMessages.title}</div>
 
-      <h2>Content</h2>
+      <H2>Content</H2>
       <textarea
-        className="border-2 border-purple-300 my-1 p-1"
+        className="p-1 bg-gray-100 w-full outline-none border border-gray-400 border-dashed focus:border-black focus:border-solid"
+        type="text"
         type="text"
         name="content"
-        cols="70"
-        rows="20"
         value={fieldValues.content}
         onChange={handleChange}
       />
       <div className="text-red-400">{errorMessages.content}</div>
       <hr />
-      <button className="button" onClick={() => handleClickedSubmitButtion()}>
+      <Button className="button" onClick={() => handleClickedSubmitButtion()}>
         저장하기
-      </button>
+      </Button>
     </div>
   );
 }

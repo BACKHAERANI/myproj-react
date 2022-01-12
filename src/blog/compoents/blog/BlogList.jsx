@@ -1,9 +1,9 @@
-import Axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Blog from '../Blog';
 import { axiosInstance } from 'api/base';
-import './Button.css';
+import H2 from 'news/compoents/H2';
+import Button from 'news/compoents/Button';
 
 function BlogList() {
   const [blogList, setBlogList] = useState([]);
@@ -60,10 +60,10 @@ function BlogList() {
 
   return (
     <div>
-      <h2>Blog List</h2>
-      <button className="button" onClick={() => navigate('/blog/new/')}>
+      <H2>Blog List</H2>
+      <Button className="button" onClick={() => navigate('/blog/new/')}>
         New!포스팅
-      </button>
+      </Button>
       <div>
         {blogList.map((bloglist) => (
           <Blog
