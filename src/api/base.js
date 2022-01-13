@@ -20,13 +20,12 @@ function useApiAxios(config, options) {
   const [errorMessages, setErrorMessages] = useState({});
 
   useEffect(() => {
-    if (error && error.response.status === 400) {
+    if (error?.response?.status === 400) {
       setErrorMessages(error.response.data);
     } else {
       setErrorMessages({});
     }
   }, [error]);
-
   return [
     { data, loading, error, response, errorMessages },
     execute,
