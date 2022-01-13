@@ -4,6 +4,7 @@ import LoadingIndicator from 'news/compoents/LoadingIndicator';
 import useFieldValues from 'components/hooks/useFieldValues';
 import { useApiAxios } from 'api/base';
 import DebugStates from 'components/DebugStates';
+import { useEffect } from 'react';
 
 const INIT_FIELD_VALUES = { title: '', content: '' };
 
@@ -36,9 +37,15 @@ function ArticleForm({ articleId, handleDidSave }) {
     { manual: true },
   );
 
-  const { fieldValues, handleFieldChange } = useFieldValues(
+  const { fieldValues, handleFieldChange, setFieldValues } = useFieldValues(
     article || INIT_FIELD_VALUES,
   );
+
+  useEffect(() => {
+    //서버로 photo=null이 전달되면 아래 오류가 발생
+    //fieldValues에서 photo만 제거하거나 photo만 null로 변경
+    setFieldValues((prevFieldValues) => ({ ...prevFieldValues, photo: '' }));
+  }, [article]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
