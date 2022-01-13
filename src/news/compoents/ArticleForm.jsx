@@ -5,6 +5,7 @@ import useFieldValues from 'components/hooks/useFieldValues';
 import { useApiAxios } from 'api/base';
 import DebugStates from 'components/DebugStates';
 import { useEffect } from 'react';
+import produce from 'immer';
 
 const INIT_FIELD_VALUES = { title: '', content: '' };
 
@@ -42,10 +43,35 @@ function ArticleForm({ articleId, handleDidSave }) {
   );
 
   useEffect(() => {
-    //서버로 photo=null이 전달되면 아래 오류가 발생
-    //fieldValues에서 photo만 제거하거나 photo만 null로 변경
-    setFieldValues((prevFieldValues) => ({ ...prevFieldValues, photo: '' }));
-  }, [article]);
+    // immer 1단계
+    // setFieldValues((prevFieldValues) => {
+    //   const newFieldValues = produce(prevFieldValues, (draft) => {
+    //     draft.photo = '';
+    //   });
+    //   return newFieldValues;
+    // });
+
+    // immer 2단계
+    // setFieldValues((prevFieldValues) => {
+    //   return produce(prevFieldValues, (draft) => {
+    //     draft.photo = '';
+    //   });
+
+    // immer 3단계
+    // setFieldValues((prevFieldValues) =>
+    //   produce(prevFieldValues, (draft) => {
+    //     draft.photo = '';
+    //   }),
+    // );
+
+    // immer 4단계
+
+    setFieldValues(
+      produce((draft) => {
+        draft.photo = '';
+      }),
+    );
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
