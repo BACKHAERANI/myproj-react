@@ -1,9 +1,30 @@
-function cookierunList() {
+import { useApiAxios } from 'api/base';
+import { useEffect } from 'react';
+import CookierunSummary from './CookierunSummary';
+
+function CookierunList() {
+  const [{ data: character, loading, error }, refetch] = useApiAxios(
+    '/cookierun/api/characters/',
+    { manual: true },
+  );
+
+  useEffect(() => {
+    refetch();
+  }, []);
+
   return (
     <div>
-      <h2>쿠키런 캐릭터</h2>
+      {loading && '쿠키가 달려가고 있어요!'}
+      {error && '쿠키가...다 타버렸어...요...'}
+      {character &&
+        character.map((char) => (
+          <div>
+            {''}
+            <CookierunSummary character={char} />
+          </div>
+        ))}
     </div>
   );
 }
 
-export default cookierunList;
+export default CookierunList;
