@@ -1,14 +1,34 @@
 import { useApiAxios } from 'api/base';
 import LoadingIndicator from 'news/compoents/LoadingIndicator';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import DebugStates from 'components/DebugStates';
 
 function CookierunDetail({ charId }) {
+  const navigate = useNavigate();
+
   const [{ data: character, loading, error }, refetch] = useApiAxios(
     `/cookierun/api/characters/${charId}`,
   );
 
   const [{ loading: deleteLoading, error: deleteError }, deleteCharacter] =
-    useApiAxios({ url: `/cookierun/api/characters/${charId}` });
+    useApiAxios(
+      { url: `/cookierun/api/characters/${charId}/`, method: 'DELETE' },
+      { manual: true },
+    );
+
+  const handleDelete = () => {
+    if (window.confirm('쿠키를 먹어버릴까요?')) {
+      deleteCharacter().then(() => {
+        navigate('/cookierun/');
+      });
+    }
+  };
+
+  useEffect(() => {
+    refetch();
+  }, []);
+
   return (
     <div>
       {loading && <LoadingIndicator />}
@@ -52,9 +72,23 @@ function CookierunDetail({ charId }) {
             >
               목록으로
             </Link>
+            <Link
+              to={`/cookierun/${charId}/edit/`}
+              className="border-2 border-blue-500 rounded-lg hover:bg-blue-500"
+            >
+              수정하기
+            </Link>
+            <button
+              disabled={deleteLoading}
+              onClick={handleDelete}
+              className="border-2 border-red-400 rounded-lg  hover:bg-red-400"
+            >
+              삭제하기
+            </button>
           </div>
         </>
       )}
+      <DebugStates char={character} />
     </div>
   );
 }

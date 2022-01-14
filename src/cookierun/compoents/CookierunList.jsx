@@ -1,4 +1,5 @@
 import { useApiAxios } from 'api/base';
+import DebugStates from 'components/DebugStates';
 import { useEffect } from 'react';
 import CookierunSummary from './CookierunSummary';
 
@@ -23,6 +24,7 @@ function CookierunList() {
             <CookierunSummary character={char} />
           </div>
         ))}
+      <DebugStates char={character} error={error} loading={loading} />
     </div>
   );
 }
