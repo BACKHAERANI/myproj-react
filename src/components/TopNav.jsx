@@ -16,6 +16,9 @@ function TopNav() {
         <li>
           <MyLink to="/news/">뉴스룸</MyLink>
         </li>
+        <li>
+          <MyLink to="/cookierun/">쿠키런</MyLink>
+        </li>
         {/* <li>
           <MyLink to="/reviews/">리뷰</MyLink>
         </li>

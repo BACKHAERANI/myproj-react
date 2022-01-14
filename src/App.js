@@ -13,11 +13,11 @@ import Clock from 'Clock/Clock';
 import useWindowWidth from 'Clock/useWindowWidth';
 import CssModule from 'pages/examples/CssModule';
 import CssInJs from 'pages/examples/CssInJs';
-import ContextApiSample from 'pages/examples/ContextApiSample';
 import ContextApiSample2 from 'pages/examples/ContextApiSample2/index';
 import PageNewsIndex from 'news/pages/PageNewsIndex';
 import PageNewsArticleDetail from 'news/pages/PageNewsArticleDetail';
 import PageNewsArticleForm from 'news/pages/PageNewsArticleForm';
+import PagecookierunIndex from 'cookierun/pages/PagecookierunIndex';
 
 function App() {
   const windowWidth = useWindowWidth();
@@ -50,6 +50,7 @@ function App() {
           path="/examples/ContextApiSample/"
           element={<ContextApiSample2 />}
         />
+        <Route path="/cookierun/" element={<PagecookierunIndex />} />
       </Routes>
       <hr />
       윈도우 가로크기 : {windowWidth}px
