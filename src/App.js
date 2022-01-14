@@ -18,6 +18,8 @@ import PageNewsIndex from 'news/pages/PageNewsIndex';
 import PageNewsArticleDetail from 'news/pages/PageNewsArticleDetail';
 import PageNewsArticleForm from 'news/pages/PageNewsArticleForm';
 import PagecookierunIndex from 'cookierun/pages/PagecookierunIndex';
+import PagecookierunDetail from 'cookierun/pages/PagecookierunDetail';
+import PagecookierunForm from 'cookierun/pages/PagecookierunForm';
 
 function App() {
   const windowWidth = useWindowWidth();
@@ -51,6 +53,12 @@ function App() {
           element={<ContextApiSample2 />}
         />
         <Route path="/cookierun/" element={<PagecookierunIndex />} />
+        <Route path="/cookierun/:charId/" element={<PagecookierunDetail />} />
+        <Route
+          path="/cookierun/:charId/edit/"
+          element={<PagecookierunForm />}
+        />
+        <Route path="/cookierun/new/" element={<PagecookierunForm />} />
       </Routes>
       <hr />
       윈도우 가로크기 : {windowWidth}px
