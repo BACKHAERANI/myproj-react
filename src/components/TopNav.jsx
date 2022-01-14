@@ -2,8 +2,12 @@ import { Link } from 'react-router-dom';
 
 function TopNav() {
   return (
-    <div className="my-3">
+    <div className="my-3 bg-orange-500 h-10">
       <ul className="flex gap-4">
+        <div className=" my-1 mx-3 text-xl text-white font-bold">
+          <span>RANISCOMPANY</span>
+        </div>
+
         <li>
           <MyLink to="/accounts/login">로그인</MyLink>
         </li>
@@ -45,10 +49,7 @@ function TopNav() {
 
 function MyLink({ to, children }) {
   return (
-    <Link
-      to={to}
-      className="pb-1 text-gray-500 hover:text-red-500 hover:border-b-4 border-red-500 "
-    >
+    <Link to={to} className="pb-1 text-white hover:border-b-4 border-white ">
       {children}
     </Link>
   );

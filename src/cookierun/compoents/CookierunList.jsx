@@ -24,7 +24,7 @@ function CookierunList() {
             <CookierunSummary character={char} />
           </div>
         ))}
-      <DebugStates char={character} error={error} loading={loading} />
+      {/* <DebugStates char={character} error={error} loading={loading} /> */}
     </div>
   );
 }
