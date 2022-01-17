@@ -20,11 +20,10 @@ function CookierunList() {
       {character &&
         character.map((char) => (
           <div>
-            {''}
             <CookierunSummary character={char} />
           </div>
         ))}
-      {/* <DebugStates char={character} error={error} loading={loading} /> */}
+      <DebugStates char={character} error={error} loading={loading} />
     </div>
   );
 }

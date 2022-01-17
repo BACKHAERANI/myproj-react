@@ -1,6 +1,6 @@
 import { useApiAxios } from 'api/base';
 import LoadingIndicator from 'news/compoents/LoadingIndicator';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import DebugStates from 'components/DebugStates';
 
