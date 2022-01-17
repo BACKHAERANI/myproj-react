@@ -1,5 +1,5 @@
-import Profile from 'pages/accounts/Profile';
-import Login from 'pages/accounts/Login';
+import Pageprofile from 'pages/accounts/Pageprofile';
+import PageLogin from 'pages/accounts/PageLogin';
 import ReviewList from 'pages/reviews/ReviewList';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import TopNav from 'components/TopNav';
@@ -28,8 +28,8 @@ function App() {
       <TopNav />
       <Routes>
         <Route path="/" element={<Navigate to="/blog/" />} />
-        <Route path="/accounts/login" element={<Login />} />
-        <Route path="/accounts/profile" element={<Profile />} />
+        <Route path="/accounts/login" element={<PageLogin />} />
+        <Route path="/accounts/profile" element={<Pageprofile />} />
         <Route path="/reviews/" element={<ReviewList />} />
         <Route path="/reviews/new/" element={<ReviewForm />} />
         <Route path="/reviews/:reviewId/edit/" element={<ReviewForm />} />
