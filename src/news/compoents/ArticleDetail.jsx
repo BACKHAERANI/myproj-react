@@ -2,12 +2,18 @@ import { useApiAxios } from 'api/base';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import LoadingIndicator from './LoadingIndicator';
+import useAuth from 'components/hooks/useAuth';
 
 function ArticleDetail({ articleId }) {
   const navigate = useNavigate();
+  const [auth] = useAuth();
 
   const [{ data: article, loading, error }, refetch] = useApiAxios(
-    `/news/api/article/${articleId}/`,
+    {
+      url: `/news/api/article/${articleId}/`,
+      method: 'GET',
+      headers: { Authorization: `Bearer ${auth.access}` },
+    },
     { manual: true },
   );
 
@@ -16,6 +22,7 @@ function ArticleDetail({ articleId }) {
       {
         url: `/news/api/article/${articleId}/`,
         method: 'DELETE',
+        headers: { Authorization: `Bearer ${auth.access}` },
       },
       { manual: true },
     );
@@ -44,6 +51,7 @@ function ArticleDetail({ articleId }) {
       {article && (
         <>
           <h3 className="text-2xl my-5">{article.title}</h3>
+          <p>by {article.author.username}</p>
           {article.photo && <img src={article.photo} alt={article.title} />}
           <div>
             {article.content.split(/[\r\n]+/).map((line, index) => (

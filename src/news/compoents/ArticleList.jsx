@@ -30,7 +30,6 @@ function ArticleList() {
       {articleList &&
         articleList.map((article) => (
           <div className="border border-gray-400 mb-4 transition-transform hover:-translate-y-2 duration-300">
-            {' '}
             <ArticleSummary article={article} />
           </div>
         ))}
