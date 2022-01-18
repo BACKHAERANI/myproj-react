@@ -14,7 +14,7 @@ const INIT_FIELD_VALUES = { title: '', content: '' };
 // articleId =>manual=false
 
 function ArticleForm({ articleId, handleDidSave }) {
-  const [auth] = useAuth();
+  const [auth, _, login] = useAuth();
   // articleId 값이 있을 때에만 조회
   // articleId => manual=false
   // !articleId => manual=true

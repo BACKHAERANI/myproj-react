@@ -20,6 +20,7 @@ import PageNewsArticleForm from 'news/pages/PageNewsArticleForm';
 import PagecookierunIndex from 'cookierun/pages/PagecookierunIndex';
 import PagecookierunDetail from 'cookierun/pages/PagecookierunDetail';
 import PagecookierunForm from 'cookierun/pages/PagecookierunForm';
+import PageSignupFrom from 'pages/accounts/PageSignupFrom';
 
 function App() {
   const windowWidth = useWindowWidth();
@@ -30,6 +31,7 @@ function App() {
         <Route path="/" element={<Navigate to="/blog/" />} />
         <Route path="/accounts/login" element={<PageLogin />} />
         <Route path="/accounts/profile" element={<Pageprofile />} />
+        <Route path="/accounts/signup/" element={<PageSignupFrom />} />
         <Route path="/reviews/" element={<ReviewList />} />
         <Route path="/reviews/new/" element={<ReviewForm />} />
         <Route path="/reviews/:reviewId/edit/" element={<ReviewForm />} />
