@@ -1,5 +1,6 @@
 import { useApiAxios } from 'api/base';
 import DebugStates from 'components/DebugStates';
+import useAuth from 'components/hooks/useAuth';
 import { useEffect } from 'react';
 import ArticleSummary from './ArticleSummary';
 
@@ -9,9 +10,19 @@ function ArticleList() {
     { manual: true },
   );
 
+  const [auth] = useAuth();
+
+  // 1번 방법
   useEffect(() => {
-    refetch();
-  }, []);
+    if (auth.isLoggedIn) {
+    }
+    refetch({
+      headers: {
+        Authorization: `Bearer ${auth.access}`,
+      },
+    });
+  }, [auth]);
+
   return (
     <div>
       <h3>뉴스 기사 목록</h3>
