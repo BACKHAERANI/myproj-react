@@ -5,22 +5,21 @@ import { useEffect } from 'react';
 import ArticleSummary from './ArticleSummary';
 
 function ArticleList() {
+  const [auth] = useAuth();
+
+  //2번방법
   const [{ data: articleList, loading, error }, refetch] = useApiAxios(
-    '/news/api/article/',
+    {
+      url: '/news/api/article/',
+      method: 'GET',
+      headers: { Authorization: `Bearer ${auth.access}` },
+    },
+
     { manual: true },
   );
 
-  const [auth] = useAuth();
-
-  // 1번 방법
   useEffect(() => {
-    if (auth.isLoggedIn) {
-    }
-    refetch({
-      headers: {
-        Authorization: `Bearer ${auth.access}`,
-      },
-    });
+    refetch();
   }, [auth]);
 
   return (
