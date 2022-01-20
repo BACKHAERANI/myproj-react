@@ -2,12 +2,12 @@ import DebugStates from 'components/DebugStates';
 import { useApiAxios } from 'api/base';
 import useFieldValues from 'components/hooks/useFieldValues';
 import H1 from 'news/compoents/H1';
-import useAuth from 'components/hooks/useAuth';
+import { useAuth } from 'contexts/AuthContext';
 
 const INITIAL_FIELD_VALUES = { username: '', password: '' };
 
 function LoginForm() {
-  const [auth, _, login] = useAuth();
+  const { auth, login } = useAuth();
   const [{ loading, error }, requestToken] = useApiAxios(
     {
       url: '/accounts/api/token/',

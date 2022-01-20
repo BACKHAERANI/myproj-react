@@ -1,11 +1,11 @@
 import { useApiAxios } from 'api/base';
 import DebugStates from 'components/DebugStates';
-import useAuth from 'components/hooks/useAuth';
+import { useAuth } from 'contexts/AuthContext';
 import { useEffect } from 'react';
 import ArticleSummary from './ArticleSummary';
 
 function ArticleList() {
-  const [auth] = useAuth();
+  const { auth } = useAuth();
 
   //2번방법
   const [{ data: articleList, loading, error }, refetch] = useApiAxios(
