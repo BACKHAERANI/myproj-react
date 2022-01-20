@@ -1,13 +1,12 @@
-import useAxios from 'axios-hooks';
 import DebugStates from 'components/DebugStates';
 import H3 from 'news/compoents/H3';
 import Blog from '../Blog';
 import { useEffect } from 'react';
+import { useApiAxios } from 'api/base';
 
 function BlogList() {
-  const [{ data: blogList, loading, error }, refetch] = useAxios(
-    'http://127.0.0.1:8000/blog/api/posts/',
-  );
+  const [{ data: blogList, loading, error }, refetch] =
+    useApiAxios('/blog/api/posts/');
 
   useEffect(() => {
     refetch();
